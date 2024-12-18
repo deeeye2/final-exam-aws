@@ -1,18 +1,14 @@
-# Use Node.js base image
-FROM node:18
+# Use an NGINX base image
+FROM nginx:latest
 
-# Set working directory
-WORKDIR /app
+# Set the working directory inside the container
+WORKDIR /usr/share/nginx/html
 
-# Copy package files and install dependencies
-COPY package.json package-lock.json ./
-RUN npm install
-
-# Copy application code
+# Copy the static files to the container
 COPY . .
 
-# Expose the application port
-EXPOSE 3000
+# Expose the default NGINX HTTP port
+EXPOSE 80
 
-# Start the backend server
-CMD ["npm", "start"]
+# Start NGINX
+CMD ["nginx", "-g", "daemon off;"]

@@ -8,13 +8,18 @@ phases:
 
   build:
     commands:
-      - echo Building the Docker image...
-      - docker build -t $ECR_REPOSITORY_URL ./frontend  # Specify the correct directory for the build context
-      - echo Tagging the image...
+      - echo Building the Docker image for the frontend...
+      - docker build -t $ECR_REPOSITORY_URL ./frontend  # Build context points to 'frontend'
+      - echo Tagging the frontend image...
       - docker tag $ECR_REPOSITORY_URL:latest $ECR_REPOSITORY_URL:latest
 
   post_build:
     commands:
       - echo Pushing the Docker image to ECR...
       - docker push $ECR_REPOSITORY_URL:latest
+
+artifacts:
+  files:
+    - '**/*'  # Include all files if you need to save artifacts for further stages
+
 
