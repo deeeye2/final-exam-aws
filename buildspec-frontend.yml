@@ -17,3 +17,4 @@ phases:
     commands:
       - echo Pushing the Docker image to ECR...
       - docker push $ECR_REPOSITORY_URL:latest
+
