@@ -13,8 +13,10 @@
   <p id="apiResponse"></p>
 
   <script>
+    const backendUrl = "http://<alb-dns-name>/api"; // Replace with your ALB DNS name
+
     document.getElementById('fetchData').addEventListener('click', () => {
-      fetch('/api')
+      fetch(backendUrl)
         .then(response => response.json())
         .then(data => {
           document.getElementById('apiResponse').innerText = data.message;
@@ -24,3 +26,4 @@
   </script>
 </body>
 </html>
+
