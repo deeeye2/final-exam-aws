@@ -13,7 +13,7 @@
   <p id="apiResponse"></p>
 
   <script>
-    const backendUrl = "http://<alb-dns-name>/api"; // Replace with your ALB DNS name
+    const backendUrl = "http://main-alb-601862354.us-east-1.elb.amazonaws.com/api"; // Replace with your ALB DNS name
 
     document.getElementById('fetchData').addEventListener('click', () => {
       fetch(backendUrl)
